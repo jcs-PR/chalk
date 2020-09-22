@@ -75,12 +75,14 @@
 ;;
 
 (defun chalk-red (format-string &rest args)
-  ""
+  "Log message with color red.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
   (apply 'chalk--log (list (apply 'format format-string args)
                            :foreground chalk-red)))
 
 (defun chalk-log (format-string &rest args)
-  "Basic chalk message."
+  "Basic chalk message.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
   (apply 'chalk--log (list (apply 'format format-string args))))
 
 ;;
@@ -91,7 +93,11 @@
                              family foundry width height weight slant distant-foreground
                              foreground background underline overline strike-through
                              box inverse-video stipple font inherit)
-  "Message STRING with keys."
+  "Message STRING with keys.
+
+See `propertize' function's description for arguments FAMILY, FOUNDRY, WIDTH,
+HEIGHT, WEIGHT, SLANT, DISTANT-FOREGROUND, FOREGROUND, BACKGROUND, UNDERLINE,
+OVERLINE, STRIKE-THROUGH, BOX, INVERSE-VIDEO, STIPPLE, FONT and INHERIT"
   (unless chalk-disable-log
     (apply 'message
            (list (chalk string
@@ -108,7 +114,11 @@
                         family foundry width height weight slant distant-foreground
                         foreground background underline overline strike-through
                         box inverse-video stipple font inherit)
-  "Propertize STRING with keys."
+  "Propertize STRING with keys.
+
+See `propertize' function's description for arguments FAMILY, FOUNDRY, WIDTH,
+HEIGHT, WEIGHT, SLANT, DISTANT-FOREGROUND, FOREGROUND, BACKGROUND, UNDERLINE,
+OVERLINE, STRIKE-THROUGH, BOX, INVERSE-VIDEO, STIPPLE, FONT and INHERIT"
   (let ((prop '()))
     (setq prop (chalk--set-prop prop :family family)
           prop (chalk--set-prop prop :foundry foundry)
