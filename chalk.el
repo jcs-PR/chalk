@@ -109,6 +109,42 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
   "Propertize STRING with blue color."
   (chalk string :foreground chalk-blue))
 
+(defun chalk-orange (string)
+  "Propertize STRING with orange color."
+  (chalk string :foreground chalk-orange))
+
+(defun chalk-yellow (string)
+  "Propertize STRING with yellow color."
+  (chalk string :foreground chalk-yellow))
+
+(defun chalk-cyan (string)
+  "Propertize STRING with cyan color."
+  (chalk string :foreground chalk-cyan))
+
+(defun chalk-violet (string)
+  "Propertize STRING with violet color."
+  (chalk string :foreground chalk-violet))
+
+(defun chalk-olive (string)
+  "Propertize STRING with olive color."
+  (chalk string :foreground chalk-olive))
+
+(defun chalk-pink (string)
+  "Propertize STRING with pink color."
+  (chalk string :foreground chalk-pink))
+
+(defun chalk-silver (string)
+  "Propertize STRING with silver color."
+  (chalk string :foreground chalk-silver))
+
+(defun chalk-sky-blue (string)
+  "Propertize STRING with sky-blue color."
+  (chalk string :foreground chalk-sky-blue))
+
+(defun chalk-purple (string)
+  "Propertize STRING with purple color."
+  (chalk string :foreground chalk-purple))
+
 ;;
 ;; (@* "Core" )
 ;;
