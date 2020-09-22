@@ -33,10 +33,101 @@
 ;;; Code:
 
 (defgroup chalk nil
-  ""
+  "Log message cleanly with color on it."
   :prefix "chalk-"
   :group 'tool
   :link '(url-link :tag "Repository" "https://github.com/jcs-elpa/chalk"))
+
+(defcustom chalk-disable-log nil
+  "When non-nil, no log can be output."
+  :type 'boolean
+  :group 'chalk)
+
+;;
+;; (@* "Constant" )
+;;
+
+(defconst chalk-black "black")
+(defconst chalk-white "white")
+(defconst chalk-red "red")
+(defconst chalk-green "green")
+(defconst chalk-blue "blue")
+(defconst chalk-orange "#FFA500")
+(defconst chalk-yellow "yellow")
+(defconst chalk-cyan "cyan")
+(defconst chalk-violet "#EE82EE")
+(defconst chalk-olive "#808000")
+(defconst chalk-pink "#FFC0CB")
+(defconst chalk-silver "#C0C0C0")
+(defconst chalk-sky-blue "#87CEEB")
+(defconst chalk-purple "#800080")
+
+;;
+;; (@* "Util" )
+;;
+
+(defun chalk--set-prop (plist prop val)
+  "Set PLIST by PROP and VAL; then return it."
+  (when val (setq plist (plist-put plist prop val))) plist)
+
+;;
+;; (@* "Core" )
+;;
+
+(defun chalk-red (format-string &rest args)
+  ""
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-red)))
+
+(defun chalk-log (format-string &rest args)
+  "Basic chalk message."
+  (apply 'chalk--log (list (apply 'format format-string args))))
+
+;;
+;; (@* "Internal" )
+;;
+
+(cl-defun chalk--log (string &key
+                             family foundry width height weight slant distant-foreground
+                             foreground background underline overline strike-through
+                             box inverse-video stipple font inherit)
+  "Message STRING with keys."
+  (unless chalk-disable-log
+    (apply 'message
+           (list (chalk string
+                        :family family :foundry foundry :width width :height height
+                        :weight weight :slant slant
+                        :distant-foreground distant-foreground
+                        :foreground foreground :background background
+                        :underline underline :overline overline
+                        :strike-through strike-through
+                        :box box :inverse-video inverse-video :stipple stipple
+                        :font font :inherit inherit)))))
+
+(cl-defun chalk (string &key
+                        family foundry width height weight slant distant-foreground
+                        foreground background underline overline strike-through
+                        box inverse-video stipple font inherit)
+  "Propertize STRING with keys."
+  (let ((prop '()))
+    (setq prop (chalk--set-prop prop :family family)
+          prop (chalk--set-prop prop :foundry foundry)
+          prop (chalk--set-prop prop :width width)
+          prop (chalk--set-prop prop :height height)
+          prop (chalk--set-prop prop :weight weight)
+          prop (chalk--set-prop prop :slant slant)
+          prop (chalk--set-prop prop :distant-foreground distant-foreground)
+          prop (chalk--set-prop prop :foreground foreground)
+          prop (chalk--set-prop prop :background background)
+          prop (chalk--set-prop prop :underline underline)
+          prop (chalk--set-prop prop :overline overline)
+          prop (chalk--set-prop prop :strike-through strike-through)
+          prop (chalk--set-prop prop :box box)
+          prop (chalk--set-prop prop :inverse-video inverse-video)
+          prop (chalk--set-prop prop :stipple stipple)
+          prop (chalk--set-prop prop :font font)
+          prop (chalk--set-prop prop :inherit inherit))
+    (propertize string 'face prop)))
 
 (provide 'chalk)
 ;;; chalk.el ends here
