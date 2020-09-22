@@ -71,10 +71,10 @@
   (when val (setq plist (plist-put plist prop val))) plist)
 
 ;;
-;; (@* "Core" )
+;; (@* "Log" )
 ;;
 
-(defun chalk-red (format-string &rest args)
+(defun chalk-log-red (format-string &rest args)
   "Log message with color red.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (apply 'chalk--log (list (apply 'format format-string args)
@@ -86,7 +86,31 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
   (apply 'chalk--log (list (apply 'format format-string args))))
 
 ;;
-;; (@* "Internal" )
+;; (@* "Color" )
+;;
+
+(defun chalk-black (string)
+  "Propertize STRING with black color."
+  (chalk string :foreground chalk-black))
+
+(defun chalk-white (string)
+  "Propertize STRING with white color."
+  (chalk string :foreground chalk-white))
+
+(defun chalk-red (string)
+  "Propertize STRING with red color."
+  (chalk string :foreground chalk-red))
+
+(defun chalk-green (string)
+  "Propertize STRING with green color."
+  (chalk string :foreground chalk-green))
+
+(defun chalk-blue (string)
+  "Propertize STRING with blue color."
+  (chalk string :foreground chalk-blue))
+
+;;
+;; (@* "Core" )
 ;;
 
 (cl-defun chalk--log (string &key
