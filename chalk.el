@@ -100,7 +100,7 @@
   "Set PLIST by PROP and VAL; then return it."
   (when val (setq plist (plist-put plist prop val))) plist)
 
-(defun chalk--message (format-string &rest args)
+(defun chalk-message (format-string &rest args)
   "Acts like `message' but preserves string properties in the *Messages* buffer.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (let ((message-log-max nil)) (apply 'message format-string args))
@@ -427,7 +427,7 @@ See `propertize' function's description for arguments FAMILY, FOUNDRY, WIDTH,
 HEIGHT, WEIGHT, SLANT, DISTANT-FOREGROUND, FOREGROUND, BACKGROUND, UNDERLINE,
 OVERLINE, STRIKE-THROUGH, BOX, INVERSE-VIDEO, STIPPLE, FONT and INHERIT"
   (unless chalk-disable-log
-    (apply (if chalk-flush #'chalk--message #'message)
+    (apply (if chalk-flush #'chalk-message #'message)
            (list (chalk string
                         :family family :foundry foundry :width width :height height
                         :weight weight :slant slant
