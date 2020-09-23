@@ -90,6 +90,8 @@
 
 (defconst chalk-inverse-video t)
 
+(defconst chalk-inherit 'default)
+
 ;;
 ;; (@* "Util" )
 ;;
@@ -269,6 +271,11 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk--log (chalk-inverse-video (apply 'format format-string args))))
 
+(defun chalk-log-inherit (format-string &rest args)
+  "Log message with inherit.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-inherit (apply 'format format-string args))))
+
 ;;
 ;; (@* "Color" )
 ;;
@@ -379,23 +386,28 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
 
 (cl-defun chalk-underline (string &key underline)
   "Propertize STRING with underline."
-  (unless underline (setq underline t))
+  (unless underline (setq underline chalk-underline))
   (chalk string :underline underline))
 
 (cl-defun chalk-overline (string &key overline)
   "Propertize STRING with overline."
-  (unless overline (setq overline t))
+  (unless overline (setq overline chalk-overline))
   (chalk string :overline overline))
 
 (cl-defun chalk-strike-through (string &key strike-through)
   "Propertize STRING with strike-through."
-  (unless strike-through (setq strike-through t))
+  (unless strike-through (setq strike-through chalk-strike-through))
   (chalk string :strike-through strike-through))
 
 (cl-defun chalk-inverse-video (string &key inverse-video)
   "Propertize STRING with inverse-video."
-  (unless inverse-video (setq inverse-video t))
+  (unless inverse-video (setq inverse-video chalk-inverse-video))
   (chalk string :inverse-video inverse-video))
+
+(cl-defun chalk-inherit (string &key inherit)
+  "Propertize STRING with inverse-video."
+  (unless inherit (setq inherit chalk-inherit))
+  (chalk string :inherit inherit))
 
 ;;
 ;; (@* "Core" )
