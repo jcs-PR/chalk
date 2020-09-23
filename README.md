@@ -4,15 +4,6 @@
 # chalk
 > Customize text easily with log.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
-
-- [chalk](#chalk)
-    - [Usage](#usage)
-    - [Contribution](#contribution)
-
-<!-- markdown-toc end -->
-
 <p align="center">
   <img src="./etc/demo1.png"/>
 </p>
