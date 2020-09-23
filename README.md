@@ -5,7 +5,7 @@
 > Customize text easily with log.
 
 <p align="center">
-  <img src="./etc/demo.png"/>
+  <img src="./etc/demo.png" width="1114" height="164"/>
 </p>
 
 This package brings propertize string a bit easier for common usage.
