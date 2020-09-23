@@ -4,6 +4,15 @@
 # chalk
 > Customize text easily with log.
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [chalk](#chalk)
+    - [Usage](#usage)
+    - [Contribution](#contribution)
+
+<!-- markdown-toc end -->
+
 <p align="center">
   <img src="./etc/demo1.png"/>
 </p>
@@ -16,6 +25,12 @@ You can propertize string easily by supported API.
 
 ```el
 (chalk-red "This is red")  ; Make string color red
+```
+
+Hence you can work with nested like this below.
+
+```el
+(message "%s %s" (chalk-red "red") (chalk-blue "blue"))
 ```
 
 ## Contribution
