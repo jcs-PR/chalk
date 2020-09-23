@@ -73,6 +73,7 @@
 (defconst chalk-extra-bold 'extra-bold)
 (defconst chalk-bold 'bold)
 (defconst chalk-semi-bold 'semi-bold)
+
 (defconst chalk-semi-light 'semi-light)
 (defconst chalk-light 'light)
 (defconst chalk-extra-light 'extra-light)
@@ -186,15 +187,65 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk--log (chalk-purple (apply 'format format-string args))))
 
+(defun chalk-log-ultra-bold (format-string &rest args)
+  "Log message with weight ultra-bold.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-ultra-bold (apply 'format format-string args))))
+
+(defun chalk-log-extra-bold (format-string &rest args)
+  "Log message with weight extra-bold.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-extra-bold (apply 'format format-string args))))
+
 (defun chalk-log-bold (format-string &rest args)
   "Log message with weight bold.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk--log (chalk-bold (apply 'format format-string args))))
 
+(defun chalk-log-semi-bold (format-string &rest args)
+  "Log message with weight semi-bold.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-semi-bold (apply 'format format-string args))))
+
+(defun chalk-log-semi-light (format-string &rest args)
+  "Log message with weight semi-light.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-semi-light (apply 'format format-string args))))
+
+(defun chalk-log-light (format-string &rest args)
+  "Log message with weight light.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-light (apply 'format format-string args))))
+
+(defun chalk-log-extra-light (format-string &rest args)
+  "Log message with weight extra-light.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-extra-light (apply 'format format-string args))))
+
+(defun chalk-log-ultra-light (format-string &rest args)
+  "Log message with weight ultra-light.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-ultra-light (apply 'format format-string args))))
+
 (defun chalk-log-italic (format-string &rest args)
   "Log message with slant italic.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk--log (chalk-italic (apply 'format format-string args))))
+
+(defun chalk-log-oblique (format-string &rest args)
+  "Log message with slant oblique.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-oblique (apply 'format format-string args))))
+
+(defun chalk-log-reverse-italic (format-string &rest args)
+  "Log message with slant reverse-italic.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-reverse-italic (apply 'format format-string args))))
+
+(defun chalk-log-reverse-oblique (format-string &rest args)
+  "Log message with slant reverse-oblique.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-reverse-oblique (apply 'format format-string args))))
 
 (defun chalk-log-underline (format-string &rest args)
   "Log message with underline.
