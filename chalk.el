@@ -43,6 +43,11 @@
   :type 'boolean
   :group 'chalk)
 
+(defcustom chalk-flush nil
+  "When non-nil, the color will be preserved in *Message* buffer."
+  :type 'boolean
+  :group 'chalk)
+
 ;;
 ;; (@* "Constant" )
 ;;
@@ -69,6 +74,18 @@
 (defun chalk--set-prop (plist prop val)
   "Set PLIST by PROP and VAL; then return it."
   (when val (setq plist (plist-put plist prop val))) plist)
+
+(defun chalk--message (format-string &rest args)
+  "Acts like `message' but preserves string properties in the *Messages* buffer.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (let ((message-log-max nil)) (apply 'message format-string args))
+  (with-current-buffer (get-buffer "*Messages*")
+    (save-excursion
+      (goto-char (point-max))
+      (let ((inhibit-read-only t))
+        (unless (zerop (current-column)) (insert "\n"))
+        (insert (apply 'format format-string args))
+        (insert "\n")))))
 
 ;;
 ;; (@* "Log" )
@@ -237,7 +254,7 @@ See `propertize' function's description for arguments FAMILY, FOUNDRY, WIDTH,
 HEIGHT, WEIGHT, SLANT, DISTANT-FOREGROUND, FOREGROUND, BACKGROUND, UNDERLINE,
 OVERLINE, STRIKE-THROUGH, BOX, INVERSE-VIDEO, STIPPLE, FONT and INHERIT"
   (unless chalk-disable-log
-    (apply 'message
+    (apply (if chalk-flush 'chalk--message 'message)
            (list (chalk string
                         :family family :foundry foundry :width width :height height
                         :weight weight :slant slant
