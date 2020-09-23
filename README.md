@@ -18,10 +18,10 @@ You can propertize string easily by supported API.
 (chalk-red "This is red")  ; Make string color red
 ```
 
-Hence you can work with nested like this below.
+Combined styled and normal strings.
 
 ```el
-(message "%s %s" (chalk-red "red") (chalk-blue "blue"))
+(message "%s%s" (chalk-red "Hello") (chalk-blue "!"))
 ```
 
 ## Contribution
