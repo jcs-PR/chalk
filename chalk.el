@@ -74,11 +74,89 @@
 ;; (@* "Log" )
 ;;
 
+(defun chalk-log-black (format-string &rest args)
+  "Log message with color black.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-black)))
+
+(defun chalk-log-white (format-string &rest args)
+  "Log message with color white.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-white)))
+
 (defun chalk-log-red (format-string &rest args)
   "Log message with color red.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (apply 'chalk--log (list (apply 'format format-string args)
                            :foreground chalk-red)))
+
+(defun chalk-log-green (format-string &rest args)
+  "Log message with color green.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-green)))
+
+(defun chalk-log-blue (format-string &rest args)
+  "Log message with color blue.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-blue)))
+
+(defun chalk-log-orange (format-string &rest args)
+  "Log message with color orange.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-orange)))
+
+(defun chalk-log-yellow (format-string &rest args)
+  "Log message with color yellow.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-yellow)))
+
+(defun chalk-log-cyan (format-string &rest args)
+  "Log message with color cyan.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-cyan)))
+
+(defun chalk-log-violet (format-string &rest args)
+  "Log message with color violet.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-violet)))
+
+(defun chalk-log-olive (format-string &rest args)
+  "Log message with color olive.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-olive)))
+
+(defun chalk-log-pink (format-string &rest args)
+  "Log message with color pink.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-pink)))
+
+(defun chalk-log-silver (format-string &rest args)
+  "Log message with color silver.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-silver)))
+
+(defun chalk-log-sky-blue (format-string &rest args)
+  "Log message with color sky blue.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-sky-blue)))
+
+(defun chalk-log-purple (format-string &rest args)
+  "Log message with color purple.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (apply 'chalk--log (list (apply 'format format-string args)
+                           :foreground chalk-purple)))
 
 (defun chalk-log (format-string &rest args)
   "Basic chalk message.
@@ -90,11 +168,11 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
 ;;
 
 (defun chalk-black (string)
-  "Propertize STRING with black color."
+  "Propertize STRING with color black."
   (chalk string :foreground chalk-black))
 
 (defun chalk-white (string)
-  "Propertize STRING with white color."
+  "Propertize STRING with color white."
   (chalk string :foreground chalk-white))
 
 (defun chalk-red (string)
@@ -102,47 +180,47 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk string :foreground chalk-red))
 
 (defun chalk-green (string)
-  "Propertize STRING with green color."
+  "Propertize STRING with color green."
   (chalk string :foreground chalk-green))
 
 (defun chalk-blue (string)
-  "Propertize STRING with blue color."
+  "Propertize STRING with color blue."
   (chalk string :foreground chalk-blue))
 
 (defun chalk-orange (string)
-  "Propertize STRING with orange color."
+  "Propertize STRING with color orange."
   (chalk string :foreground chalk-orange))
 
 (defun chalk-yellow (string)
-  "Propertize STRING with yellow color."
+  "Propertize STRING with color yellow."
   (chalk string :foreground chalk-yellow))
 
 (defun chalk-cyan (string)
-  "Propertize STRING with cyan color."
+  "Propertize STRING with color cyan."
   (chalk string :foreground chalk-cyan))
 
 (defun chalk-violet (string)
-  "Propertize STRING with violet color."
+  "Propertize STRING with color violet."
   (chalk string :foreground chalk-violet))
 
 (defun chalk-olive (string)
-  "Propertize STRING with olive color."
+  "Propertize STRING with color olive."
   (chalk string :foreground chalk-olive))
 
 (defun chalk-pink (string)
-  "Propertize STRING with pink color."
+  "Propertize STRING with color pink."
   (chalk string :foreground chalk-pink))
 
 (defun chalk-silver (string)
-  "Propertize STRING with silver color."
+  "Propertize STRING with color silver."
   (chalk string :foreground chalk-silver))
 
 (defun chalk-sky-blue (string)
-  "Propertize STRING with sky-blue color."
+  "Propertize STRING with color sky-blue."
   (chalk string :foreground chalk-sky-blue))
 
 (defun chalk-purple (string)
-  "Propertize STRING with purple color."
+  "Propertize STRING with color purple."
   (chalk string :foreground chalk-purple))
 
 ;;
