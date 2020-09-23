@@ -4,31 +4,19 @@
 # chalk
 > Customize text easily with log.
 
+<p align="center">
+  <img src="./etc/demo.png"/>
+</p>
+
+This package brings propertize string a bit easier for common usage.
+
 ## Usage
 
-### Code
+You can propertize string easily by supported API.
 
 ```el
-(chalk-log-red "This is red")
-(chalk-log-green "This is green")
-(chalk-log-blue "This is blue")
-(chalk-log-purple "This is purple")
-
-(chalk-log-bold "This is bold")
-(chalk-log-italic "This is italic")
-
-(chalk-log-underline "This with underline")
-(chalk-log-overline "This with overline")
-(chalk-log-strike-through "This with strike-through")
-
-(chalk-log-inverse-video "This with inverse-video")
-
-(chalk-log (chalk-inherit "This with inherit" :inherit 'font-lock-comment-face))
+(chalk-red "This is red")  ; Make string color red
 ```
-
-### Output
-
-<img src="./etc/demo.png"/>
 
 ## Contribution
 
