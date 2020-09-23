@@ -88,6 +88,8 @@
 (defconst chalk-overline t)
 (defconst chalk-strike-through t)
 
+(defconst chalk-inverse-video t)
+
 ;;
 ;; (@* "Util" )
 ;;
@@ -262,6 +264,11 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk--log (chalk-strike-through (apply 'format format-string args))))
 
+(defun chalk-log-inverse-video (format-string &rest args)
+  "Log message with inverse-video.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-inverse-video (apply 'format format-string args))))
+
 ;;
 ;; (@* "Color" )
 ;;
@@ -384,6 +391,11 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
   "Propertize STRING with strike-through."
   (unless strike-through (setq strike-through t))
   (chalk string :strike-through strike-through))
+
+(cl-defun chalk-inverse-video (string &key inverse-video)
+  "Propertize STRING with inverse-video."
+  (unless inverse-video (setq inverse-video t))
+  (chalk string :inverse-video inverse-video))
 
 ;;
 ;; (@* "Core" )
