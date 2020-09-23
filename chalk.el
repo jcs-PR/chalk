@@ -1,10 +1,10 @@
-;;; chalk.el --- Log message cleanly with color on it  -*- lexical-binding: t; -*-
+;;; chalk.el --- Customize text easily with log  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020  Shen, Jen-Chieh
 ;; Created date 2020-09-22 16:47:44
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
-;; Description: Log message cleanly with color on it.
+;; Description: Customize text easily with log.
 ;; Keyword: color log message text string
 ;; Version: 0.0.1
 ;; Package-Requires: ((emacs "24.3"))
@@ -27,13 +27,13 @@
 
 ;;; Commentary:
 ;;
-;; Log message cleanly with color on it.
+;; Customize text easily with log.
 ;;
 
 ;;; Code:
 
 (defgroup chalk nil
-  "Log message cleanly with color on it."
+  "Customize text easily with log."
   :prefix "chalk-"
   :group 'tool
   :link '(url-link :tag "Repository" "https://github.com/jcs-elpa/chalk"))
@@ -267,7 +267,7 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk--log (chalk-strike-through (apply 'format format-string args))))
 
 (defun chalk-log-inverse-video (format-string &rest args)
-  "Log message with inverse-video.
+  "Log message with `inverse-video'.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
   (chalk--log (chalk-inverse-video (apply 'format format-string args))))
 
@@ -342,70 +342,74 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
 
 (defun chalk-ultra-bold (string)
   "Propertize STRING with weight ultra-bold."
-  (chalk string :weight 'ultra-bold))
+  (chalk string :weight chalk-ultra-bold))
 
 (defun chalk-extra-bold (string)
   "Propertize STRING with weight extra-bold."
-  (chalk string :weight 'extra-bold))
+  (chalk string :weight chalk-extra-bold))
 
 (defun chalk-bold (string)
   "Propertize STRING with weight bold."
-  (chalk string :weight 'bold))
+  (chalk string :weight chalk-bold))
+
+(defun chalk-semi-bold (string)
+  "Propertize STRING with weight semi-bold."
+  (chalk string :weight chalk-semi-bold))
 
 (defun chalk-semi-light (string)
   "Propertize STRING with weight semi-light."
-  (chalk string :weight 'semi-light))
+  (chalk string :weight chalk-semi-light))
 
 (defun chalk-light (string)
   "Propertize STRING with weight light."
-  (chalk string :weight 'light))
+  (chalk string :weight chalk-light))
 
 (defun chalk-extra-light (string)
   "Propertize STRING with weight extra-light."
-  (chalk string :weight 'extra-light))
+  (chalk string :weight chalk-extra-light))
 
 (defun chalk-ultra-light (string)
   "Propertize STRING with weight ultra-light."
-  (chalk string :weight 'ultra-light))
+  (chalk string :weight chalk-ultra-light))
 
 (defun chalk-italic (string)
   "Propertize STRING with slant italic."
-  (chalk string :slant 'italic))
+  (chalk string :slant chalk-italic))
 
 (defun chalk-oblique (string)
   "Propertize STRING with slant oblique."
-  (chalk string :slant 'oblique))
+  (chalk string :slant chalk-oblique))
 
 (defun chalk-reverse-italic (string)
   "Propertize STRING with slant italic."
-  (chalk string :slant 'reverse-italic))
+  (chalk string :slant chalk-reverse-italic))
 
 (defun chalk-reverse-oblique (string)
   "Propertize STRING with slant italic."
-  (chalk string :slant 'reverse-oblique))
+  (chalk string :slant chalk-reverse-oblique))
 
 (cl-defun chalk-underline (string &key underline)
-  "Propertize STRING with underline."
+  "Propertize STRING with UNDERLINE."
   (unless underline (setq underline chalk-underline))
   (chalk string :underline underline))
 
 (cl-defun chalk-overline (string &key overline)
-  "Propertize STRING with overline."
+  "Propertize STRING with OVERLINE."
   (unless overline (setq overline chalk-overline))
   (chalk string :overline overline))
 
 (cl-defun chalk-strike-through (string &key strike-through)
-  "Propertize STRING with strike-through."
+  "Propertize STRING with STRIKE-THROUGH."
   (unless strike-through (setq strike-through chalk-strike-through))
   (chalk string :strike-through strike-through))
 
 (cl-defun chalk-inverse-video (string &key inverse-video)
-  "Propertize STRING with inverse-video."
+  "Propertize STRING with INVERSE-VIDEO."
   (unless inverse-video (setq inverse-video chalk-inverse-video))
   (chalk string :inverse-video inverse-video))
 
 (cl-defun chalk-inherit (string &key inherit)
-  "Propertize STRING with inverse-video."
+  "Propertize STRING with INHERIT."
   (unless inherit (setq inherit chalk-inherit))
   (chalk string :inherit inherit))
 
