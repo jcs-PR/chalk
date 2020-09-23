@@ -52,6 +52,8 @@
 ;; (@* "Constant" )
 ;;
 
+(defconst chalk-normal 'normal)
+
 (defconst chalk-black "black")
 (defconst chalk-white "white")
 (defconst chalk-red "red")
@@ -66,6 +68,24 @@
 (defconst chalk-silver "#C0C0C0")
 (defconst chalk-sky-blue "#87CEEB")
 (defconst chalk-purple "#800080")
+
+(defconst chalk-ultra-bold 'ultra-bold)
+(defconst chalk-extra-bold 'extra-bold)
+(defconst chalk-bold 'bold)
+(defconst chalk-semi-bold 'semi-bold)
+(defconst chalk-semi-light 'semi-light)
+(defconst chalk-light 'light)
+(defconst chalk-extra-light 'extra-light)
+(defconst chalk-ultra-light 'ultra-light)
+
+(defconst chalk-italic 'italic)
+(defconst chalk-oblique 'oblique)
+(defconst chalk-reverse-italic 'reverse-italic)
+(defconst chalk-reverse-oblique 'reverse-oblique)
+
+(defconst chalk-underline t)
+(defconst chalk-overline t)
+(defconst chalk-strike-through t)
 
 ;;
 ;; (@* "Util" )
@@ -91,98 +111,113 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
 ;; (@* "Log" )
 ;;
 
+(defun chalk-log (format-string &rest args)
+  "Basic chalk message.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-normal (apply 'format format-string args))))
+
 (defun chalk-log-black (format-string &rest args)
   "Log message with color black.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-black)))
+  (chalk--log (chalk-black (apply 'format format-string args))))
 
 (defun chalk-log-white (format-string &rest args)
   "Log message with color white.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-white)))
+  (chalk--log (chalk-white (apply 'format format-string args))))
 
 (defun chalk-log-red (format-string &rest args)
   "Log message with color red.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-red)))
+  (chalk--log (chalk-red (apply 'format format-string args))))
 
 (defun chalk-log-green (format-string &rest args)
   "Log message with color green.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-green)))
+  (chalk--log (chalk-green (apply 'format format-string args))))
 
 (defun chalk-log-blue (format-string &rest args)
   "Log message with color blue.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-blue)))
+  (chalk--log (chalk-blue (apply 'format format-string args))))
 
 (defun chalk-log-orange (format-string &rest args)
   "Log message with color orange.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-orange)))
+  (chalk--log (chalk-orange (apply 'format format-string args))))
 
 (defun chalk-log-yellow (format-string &rest args)
   "Log message with color yellow.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-yellow)))
+  (chalk--log (chalk-yellow (apply 'format format-string args))))
 
 (defun chalk-log-cyan (format-string &rest args)
   "Log message with color cyan.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-cyan)))
+  (chalk--log (chalk-cyan (apply 'format format-string args))))
 
 (defun chalk-log-violet (format-string &rest args)
   "Log message with color violet.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-violet)))
+  (chalk--log (chalk-violet (apply 'format format-string args))))
 
 (defun chalk-log-olive (format-string &rest args)
   "Log message with color olive.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-olive)))
+  (chalk--log (chalk-olive (apply 'format format-string args))))
 
 (defun chalk-log-pink (format-string &rest args)
   "Log message with color pink.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-pink)))
+  (chalk--log (chalk-pink (apply 'format format-string args))))
 
 (defun chalk-log-silver (format-string &rest args)
   "Log message with color silver.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-silver)))
+  (chalk--log (chalk-silver (apply 'format format-string args))))
 
 (defun chalk-log-sky-blue (format-string &rest args)
   "Log message with color sky blue.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-sky-blue)))
+  (chalk--log (chalk-sky-blue (apply 'format format-string args))))
 
 (defun chalk-log-purple (format-string &rest args)
   "Log message with color purple.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args)
-                           :foreground chalk-purple)))
+  (chalk--log (chalk-purple (apply 'format format-string args))))
 
-(defun chalk-log (format-string &rest args)
-  "Basic chalk message.
+(defun chalk-log-bold (format-string &rest args)
+  "Log message with weight bold.
 See `message' function's description for arguments FORMAT-STRING and ARGS."
-  (apply 'chalk--log (list (apply 'format format-string args))))
+  (chalk--log (chalk-bold (apply 'format format-string args))))
+
+(defun chalk-log-italic (format-string &rest args)
+  "Log message with slant italic.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-italic (apply 'format format-string args))))
+
+(defun chalk-log-underline (format-string &rest args)
+  "Log message with underline.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-underline (apply 'format format-string args))))
+
+(defun chalk-log-overline (format-string &rest args)
+  "Log message with overline.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-overline (apply 'format format-string args))))
+
+(defun chalk-log-strike-through (format-string &rest args)
+  "Log message with strike-through.
+See `message' function's description for arguments FORMAT-STRING and ARGS."
+  (chalk--log (chalk-strike-through (apply 'format format-string args))))
 
 ;;
 ;; (@* "Color" )
 ;;
+
+(defun chalk-normal (string)
+  "Propertize STRING with everything default."
+  (chalk string))
 
 (defun chalk-black (string)
   "Propertize STRING with color black."
@@ -240,6 +275,65 @@ See `message' function's description for arguments FORMAT-STRING and ARGS."
   "Propertize STRING with color purple."
   (chalk string :foreground chalk-purple))
 
+(defun chalk-ultra-bold (string)
+  "Propertize STRING with weight ultra-bold."
+  (chalk string :weight 'ultra-bold))
+
+(defun chalk-extra-bold (string)
+  "Propertize STRING with weight extra-bold."
+  (chalk string :weight 'extra-bold))
+
+(defun chalk-bold (string)
+  "Propertize STRING with weight bold."
+  (chalk string :weight 'bold))
+
+(defun chalk-semi-light (string)
+  "Propertize STRING with weight semi-light."
+  (chalk string :weight 'semi-light))
+
+(defun chalk-light (string)
+  "Propertize STRING with weight light."
+  (chalk string :weight 'light))
+
+(defun chalk-extra-light (string)
+  "Propertize STRING with weight extra-light."
+  (chalk string :weight 'extra-light))
+
+(defun chalk-ultra-light (string)
+  "Propertize STRING with weight ultra-light."
+  (chalk string :weight 'ultra-light))
+
+(defun chalk-italic (string)
+  "Propertize STRING with slant italic."
+  (chalk string :slant 'italic))
+
+(defun chalk-oblique (string)
+  "Propertize STRING with slant oblique."
+  (chalk string :slant 'oblique))
+
+(defun chalk-reverse-italic (string)
+  "Propertize STRING with slant italic."
+  (chalk string :slant 'reverse-italic))
+
+(defun chalk-reverse-oblique (string)
+  "Propertize STRING with slant italic."
+  (chalk string :slant 'reverse-oblique))
+
+(cl-defun chalk-underline (string &key underline)
+  "Propertize STRING with underline."
+  (unless underline (setq underline t))
+  (chalk string :underline underline))
+
+(cl-defun chalk-overline (string &key overline)
+  "Propertize STRING with overline."
+  (unless overline (setq overline t))
+  (chalk string :overline overline))
+
+(cl-defun chalk-strike-through (string &key strike-through)
+  "Propertize STRING with strike-through."
+  (unless strike-through (setq strike-through t))
+  (chalk string :strike-through strike-through))
+
 ;;
 ;; (@* "Core" )
 ;;
@@ -254,7 +348,7 @@ See `propertize' function's description for arguments FAMILY, FOUNDRY, WIDTH,
 HEIGHT, WEIGHT, SLANT, DISTANT-FOREGROUND, FOREGROUND, BACKGROUND, UNDERLINE,
 OVERLINE, STRIKE-THROUGH, BOX, INVERSE-VIDEO, STIPPLE, FONT and INHERIT"
   (unless chalk-disable-log
-    (apply (if chalk-flush 'chalk--message 'message)
+    (apply (if chalk-flush #'chalk--message #'message)
            (list (chalk string
                         :family family :foundry foundry :width width :height height
                         :weight weight :slant slant
@@ -292,7 +386,7 @@ OVERLINE, STRIKE-THROUGH, BOX, INVERSE-VIDEO, STIPPLE, FONT and INHERIT"
           prop (chalk--set-prop prop :stipple stipple)
           prop (chalk--set-prop prop :font font)
           prop (chalk--set-prop prop :inherit inherit))
-    (propertize string 'face prop)))
+    (if prop (propertize string 'face prop) string)))
 
 (provide 'chalk)
 ;;; chalk.el ends here
